@@ -97,12 +97,13 @@
     "attributes": {
       "patterns": [
         {
-          "comment": "Handle 'text' attribute (with suffix) as plain text content",
-          "begin": "\\b(text-[a-zA-Z0-9]+)(=)(\")",
+          "comment": "Handle 'text' attribute (with complex suffix like text-jp, text1, text_1-hk) as plain text content",
+          "begin": "\\b(text[a-zA-Z0-9_]*)(-[a-zA-Z0-9_-]+)*(=)(\")",
           "beginCaptures": {
             "1": { "name": "entity.other.attribute-name.novelml" },
-            "2": { "name": "punctuation.separator.key-value.novelml" },
-            "3": { "name": "punctuation.definition.string.begin.novelml" }
+            "2": { "name": "entity.other.attribute-name.novelml" },
+            "3": { "name": "punctuation.separator.key-value.novelml" },
+            "4": { "name": "punctuation.definition.string.begin.novelml" }
           },
           "end": "\"",
           "endCaptures": {
