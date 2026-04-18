@@ -2,7 +2,7 @@
   "name": "novelml-highlighter",
   "displayName": "NovelML Highlighter",
   "description": "Syntax highlighting support for NovelML (.novel) files",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "lalalll-lalalll",
   "engines": {
     "vscode": "^1.116.0"
