@@ -12,14 +12,11 @@
   ],
   "keywords": [
     "novelml",
+    "ray",
     "suika",
     "suika3",
     "highlighting"
   ],
-  "activationEvents": [
-    "onLanguage:novelml"
-  ],
-  "main": "./syntaxes/novelml.tmLanguage.json",
   "contributes": {
     "languages": [
       {
@@ -31,7 +28,19 @@
         "extensions": [
           ".novel"
         ],
-        "configuration": "./language-configuration.json"
+        "configuration": "./languages/novelml-language-configuration.json"
+      },
+      {
+        "id": "ray",
+        "aliases": [
+          "Ray",
+          "ray"
+        ],
+        "extensions": [
+          ".ray",
+          ".pf"
+        ],
+        "configuration": "./languages/ray-language-configuration.json"
       }
     ],
     "grammars": [
@@ -39,6 +48,11 @@
         "language": "novelml",
         "scopeName": "source.novelml",
         "path": "./syntaxes/novelml.tmLanguage.json"
+      },
+      {
+        "language": "ray",
+        "scopeName": "source.ray",
+        "path": "./syntaxes/ray.tmLanguage.json"
       }
     ],
     "snippets": [

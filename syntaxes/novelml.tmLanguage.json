@@ -98,14 +98,14 @@
       "patterns": [
         {
           "comment": "Handle 'text' attribute (with complex suffix like text-jp, text1, text_1-hk) - FIXED",
-          "begin": "\\b(text[a-zA-Z0-9_]*)(-[a-zA-Z0-9_-]+)*(=)(\")",
+          "begin": "\\b(text[a-zA-Z0-9_]*)(-[a-zA-Z0-9_-]+)*\\s*(=)\\s*(\"\"\"|\")?",
           "beginCaptures": {
             "1": { "name": "entity.other.attribute-name.novelml" },
             "2": { "name": "entity.other.attribute-name.novelml" },
             "3": { "name": "punctuation.separator.key-value.novelml" },
             "4": { "name": "punctuation.definition.string.begin.novelml" }
           },
-          "end": "\"",
+          "end": "\"\"?\"?",
           "endCaptures": {
             "0": { "name": "punctuation.definition.string.end.novelml" }
           },
