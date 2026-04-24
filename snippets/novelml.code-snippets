@@ -1,51 +1,22 @@
-
 {
-  "DSL: Text Display (Core)": {
-    "prefix": "t",
+  "DSL: anime": {
+    "prefix": "anime",
     "body": [
-		"[text name=\"${1:Name}\" text=\"${2:在此输入对话内容}\"]$0"],
-    "description": "插入对话标签 (自动聚焦文本内容)"
-  },
-  "DSL: Narration (No Name)": {
-    "prefix": "n",
-    "body": [
-      "[text text=\"${1:在此输入旁白内容}\"]$0"
+      "[anime register=\"${1:identify_name}\" file=\"${2:anime.txt}\"]$0"
     ],
-    "description": "插入无名字的旁白标签"
+    "description": "播放动画"
   },
-  "DSL: Text Action (Clear/Hide)": {
-    "prefix": "nvl",
+  "DSL: anime stop": {
+    "prefix": "animestop",
     "body": [
-      "[text action=\"${1|clear,new,show,hide|}\"]$0"
+      "[anime register=\"${1:identify_name}\" stop=\"true\"]$0"
     ],
-    "description": "插入文本框控制指令 (clear, new, show, hide)"
-  },
-
-  "DSL: Character Show (ch)": {
-    "prefix": "ch",
-    "body": [
-      "[ch ${1|center,left,right,left-center,right-center,face,bg,back|}=\"${2:filename.png}\" time=\"${3:0.5}\"]$0"
-    ],
-    "description": "显示角色 (带位置选择和时间)"
-  },
-  "DSL: Character Hide": {
-    "prefix": "cha",
-    "body": [
-      "[chapter name=\"${1:在此输入章节名}\"]$0"
-    ],
-    "description": "输入章节名"
-  },
-	"DSL: Chapter": {
-    "prefix": "chx",
-    "body": [
-      "[ch ${1|center,left,right|}=\"none\" time=\"${2:0.5}\"]$0"
-    ],
-    "description": "隐藏角色"
+    "description": "停止动画"
   },
   "DSL: Background (bg)": {
     "prefix": "bg",
     "body": [
-      "[bg file=\"${1:filename.png}\"]$0"
+      "[bg file=\"${1:filename.png}\" time=\"${2:0.0}\"]$0"
     ],
     "description": "切换背景图"
   },
@@ -56,109 +27,43 @@
     ],
     "description": "播放背景音乐"
   },
-  "DSL: Sound Effect (se)": {
-    "prefix": "se",
-    "body": [
-      "[se file=\"${1:filename.ogg}\"]$0"
-    ],
-    "description": "播放音效"
-  },
-  "DSL: GUI": {
-    "prefix": "gui",
-    "body": [
-      "[gui file=\"${1:filename.txt}\"]$0"
-    ],
-    "description": "gui"
-  },
-
-  "DSL: Wait & Click": {
-    "prefix": "wait",
-    "body": [
-      "[wait time=\"${1:1.0}\"]$0"
-    ],
-    "description": "等待指定秒数"
-  },
-  "DSL: Click (Wait for input)": {
-    "prefix": "click",
-    "body": [
-      "[click]$0"
-    ],
-    "description": "等待用户点击"
-  },
-
-  "DSL: If / Else / Endif (Block)": {
-    "prefix": "if",
-    "body": [
-      "[if lhs=\"${1:\\$\\{variable\\}}\" op=\"${2|==,!=,>,>=,<,<=|}\" rhs=\"${3:value}\"]",
-      "\t$0",
-      "[endif]"
-    ],
-    "description": "条件分支结构"
-  },
-  "DSL: Elseif": {
-    "prefix": "elseif",
-    "body": [
-      "[elseif lhs=\"${1:\\$\\{variable\\}}\" op=\"${2|==,!=,>,>=,<,<=|}\" rhs=\"${3:value}\"]"
-    ],
-    "description": "否则如果"
-  },
-  "DSL: Else": {
-    "prefix": "else",
-    "body": [
-      "[else]"
-    ],
-    "description": "否则"
-  },
-
-  "DSL: Macro Definition": {
-    "prefix": "def",
-    "body": [
-      "[defmacro name=\"${1:macro_name}\"]",
-      "\t$0",
-      "[endmacro]"
-    ],
-    "description": "定义宏"
-  },
   "DSL: Call Macro": {
-    "prefix": "call",
+    "prefix": "callmacro",
     "body": [
       "[callmacro name=\"${1:macro_name}\"]$0"
     ],
     "description": "调用宏"
   },
-
-  "DSL: Label & Goto": {
-    "prefix": "label",
+  "DSL: Call Macro File": {
+    "prefix": "callfile",
     "body": [
-      "[label name=\"${1:label_name}\"]$0"
+      "[callmacro name=\"${1:macro_name}\" file=\"${2:macro_file_name}\"]$0"
     ],
-    "description": "定义跳转标签"
+    "description": "调用宏"
   },
-  "DSL: Goto": {
-    "prefix": "goto",
+  "DSL: Character Show (ch)": {
+    "prefix": "ch",
     "body": [
-      "[goto name=\"${1:label_name}\"]$0"
+      "[ch ${1|bg,back,center,left,right,left-center,right-center,face|}=\"${2:filename.png}\" time=\"${3:0}\"]$0"
     ],
-    "description": "跳转到标签"
+    "description": "显示角色 (带位置选择和时间)"
   },
-  
-  "DSL: Set Variable": {
-    "prefix": "set",
+  "DSL: Character Hide": {
+    "prefix": "chapter",
     "body": [
-      "[set name=\"${1:var_name}\" value=\"${2:value}\"]$0"
+      "[chapter name=\"${1:在此输入章节名}\"]$0"
     ],
-    "description": "设置变量值"
+    "description": "输入章节名"
   },
-  
   "DSL: Choose (Multi-line 2 Options)": {
-    "prefix": "choose",
+    "prefix": "choose2",
     "body": [
       "[choose",
       "  name=\"${1:var_name}\"",
       "  text1=\"${2:选项A文本}\"",
       "  text2=\"${3:选项B文本}\"",
-      "  value1=\"${4:1}\"",
-      "  value2=\"${5:2}\"",
+      "  value1=\"${4:var_1}\"",
+      "  value2=\"${5:var_2}\"",
       "]"
     ],
     "description": "生成换行格式的双选项分支"
@@ -168,38 +73,111 @@
     "body": [
       "[choose",
       "  name=\"${1:var_name}\"",
-      "  text1=\"${2:选项A}\"",
-      "  text2=\"${3:选项B}\"",
-      "  text3=\"${4:选项C}\"",
-      "  value1=\"${5:1}\"",
-      "  value2=\"${6:2}\"",
-      "  value3=\"${7:3}\"",
+      "  text1=\"${2:选项A文本}\"",
+      "  text2=\"${3:选项B文本}\"",
+      "  text3=\"${4:选项C文本}\"",
+      "  value1=\"${5:var_1}\"",
+      "  value2=\"${6:var_2}\"",
+      "  value3=\"${7:var_3}\"",
       "]"
     ],
     "description": "生成换行格式的三选项分支"
   },
-  "DSL: Move Animation": {
-    "prefix": "move",
+  "DSL: Click (Wait for input)": {
+    "prefix": "click",
     "body": [
-      "[move time=\"${1:1.0}\" ${2|bg,bg2,back,left,right,center,left-center,right-center,face|}-${3|a,x,y,scale-x,scale-y,center-x,center-y,rotate,dim|}=\"${4:value}\"]$0"
+      "[click]$0"
     ],
-    "description": "图层动画移动"
+    "description": "等待用户点击"
   },
-  
+  "DSL: Config (Set Configuration Value)": {
+    "prefix": "config",
+    "body": [
+      "[config  name=\"${1:config_key}\" value=\"${2:config_value}\"]$0"
+    ],
+    "description": "修改配置文件"
+  },
+  "DSL: Macro Definition": {
+    "prefix": "defmacro",
+    "body": [
+      "[defmacro name=\"${1:macro_name}\"]",
+      "\t$0",
+      "[endmacro]"
+    ],
+    "description": "定义宏"
+  },
+  "DSL: Else": {
+    "prefix": "else",
+    "body": [
+      "[else]"
+    ],
+    "description": "否则"
+  },
+  "DSL: Elseif": {
+    "prefix": "elseif",
+    "body": [
+      "[elseif lhs=\"${1:${variable_name\\}}\" op=\"${2|==,!=,>,>=,<,<=,===|}\" rhs=\"${3:value}\"]"
+    ],
+    "description": "否则如果"
+  },
+  "DSL: Endif": {
+    "prefix": "endif",
+    "body": [
+      "[endif]"
+    ],
+    "description": "结束如果"
+  },
+  "DSL: Endmacro": {
+    "prefix": "endmacro",
+    "body": [
+      "[endmacro]"
+    ],
+    "description": "结束宏"
+  },
+  "DSL: Goto": {
+    "prefix": "goto",
+    "body": [
+      "[goto name=\"${1:label_name}\"]$0"
+    ],
+    "description": "跳转到标签"
+  },
+  "DSL: GUI": {
+    "prefix": "gui",
+    "body": [
+      "[gui file=\"${1:filename.txt}\"]$0"
+    ],
+    "description": "gui"
+  },
+  "DSL: If / Else / Endif (Block)": {
+    "prefix": "if",
+    "body": [
+      "[if lhs=\"${1:${variable_name\\}}\" op=\"${2|==,!=,>,>=,<,<=,===|}\" rhs=\"${3:value}\"]",
+      "\t$0",
+      "[endif]"
+    ],
+    "description": "条件分支结构"
+  },
+  "DSL: Label & Goto": {
+    "prefix": "label",
+    "body": [
+      "[label name=\"${1:label_name}\"]$0"
+    ],
+    "description": "定义跳转标签"
+  },
   "DSL: Layer (Full Control)": {
     "prefix": "layer",
     "body": [
       "[layer",
-      "  name=\"${1|bg,bg2,msgbox,namebox,click,chb,chb-eye,chb-lip,chb-fo,chc,chl,chlc,chr,chrc,chf,eff1,eff2,eff3,eff4,efb1,efb2,text1,text2,gui1,gui2|}\"",
+      "  name=\"${1|bg,bg2,chb,chb-eye,chb-lip,chb-fo,chc,chl,chlc,chr,chrc,chf,eff1,eff2,eff3,eff4,efb1,efb2,text1,text2|}\"",
       "  file=\"${2:filename.png}\"",
       "  x=\"${3:0}\"",
       "  y=\"${4:0}\"",
       "  alpha=\"${5:255}\"",
       "  scale-x=\"${6:1.0}\"",
       "  scale-y=\"${7:1.0}\"",
-      "  center-x=\"${9:0}\"",
-      "  center-y=\"${10:0}\"",
-	  "  rotate=\"${8:0.0}\"",
+      "  center-x=\"${8:0}\"",
+      "  center-y=\"${9:0}\"",
+      "  rotate=\"${10:0.0}\"",
       "]"
     ],
     "description": "图层控制 (带常用图层名下拉菜单)"
@@ -208,10 +186,141 @@
     "prefix": "layerclear",
     "body": [
       "[layer",
-      "  name=\"${1|bg,bg2,msgbox,namebox,click,chb,chb-eye,chb-lip,chb-fo,chc,chl,chlc,chr,chrc,chf,eff1,eff2,eff3,eff4,efb1,efb2,text1,text2,gui1,gui2|}\"",
+      "  name=\"${1|bg,bg2,chb,chb-eye,chb-lip,chb-fo,chc,chl,chlc,chr,chrc,chf,eff1,eff2,eff3,eff4,efb1,efb2,text1,text2|}\"",
       "  file=\"none\"",
       "]"
     ],
     "description": "清除指定图层 (file=\"none\")"
+  },
+  "DSL: Load Script File": {
+    "prefix": "load",
+    "body": [
+      "[load file=\"${1:filename.novel}\"]$0"
+    ],
+    "description": "加载脚本文件"
+  },
+  "DSL: Move Animation": {
+    "prefix": "move",
+    "body": [
+      "[move time=\"${1:1.0}\" ${2|bg,bg2,back,left,right,center,left-center,right-center,face|}-${3|a,x,y,scale-x,scale-y,center-x,center-y,rotate,dim|}=\"${4:value}\"]$0"
+    ],
+    "description": "图层移动"
+  },
+  "DSL: Pencil": {
+    "prefix": "pencil",
+    "body": [
+      "[pencil text=\"${1:text}\" layer=\"${2|bg,bg2,efb1,efb2,efb3,efb4,chb,chc,chl,chlc,chr,chrc,eff1,eff2,eff3,eff4,chf,text1,text2,text3,text4,text5,text6,text7,text8|}\"]$0"
+    ],
+    "description": "在图层上绘制文本"
+  },
+  "DSL: Pencil Full": {
+    "prefix": "penfull",
+    "body": [
+      "[pencil text=\"${1:text}\" layer=\"${2|text1,text2,text3,text4,text5,text6,text7,text8,bg,bg2,efb1,efb2,efb3,efb4,chb,chc,chl,chlc,chr,chrc,eff1,eff2,eff3,eff4,chf|}\"",
+      "font-type=\"${3:0}\"",
+      "font-size=\"${4:16}\"",
+      "color=\"${5:#000000}\"",
+      "outline-width=\"${6:0}\"",
+      "outline-color=\"${7:#ffffff}\"",
+      "line-margin=\"${8:8}\"",
+      "char-margin=\"${9:5}\"",
+      "x=\"${10:0}\" y=\"${11:0}\"",
+      "width=\"${12:80}\" height=\"${13:40}\"",
+      "]"
+    ],
+    "description": "在图层上绘制文本"
+  },
+  "DSL: Return from Macro": {
+    "prefix": "returnmacro",
+    "body": [
+      "[returnmacro]"
+    ],
+    "description": "返回宏"
+  },
+  "DSL: Sound Effect (se)": {
+    "prefix": "se",
+    "body": [
+      "[se file=\"${1:filename.ogg}\" loop=\"${2|false,true|}\"]$0"
+    ],
+    "description": "播放音效"
+  },
+  "DSL: Set Variable": {
+    "prefix": "set",
+    "body": [
+      "[set name=\"${1:var_name}\" value=\"${2:value}\"]$0"
+    ],
+    "description": "设置变量值"
+  },
+  "DSL: Set Variable Full": {
+    "prefix": "setfull",
+    "body": [
+      "[set name=\"${1:var_name}\" value1=\"${2:value1}\" op=\"${3|+, -, *, /, //, %|}\" value2=\"${4:value2}\"]$0"
+    ],
+    "description": "设置变量值"
+  },
+  "DSL: Set Skip Status": {
+    "prefix": "skip",
+    "body": [
+      "[skip enable=\"${1|false,true|}\"]$0"
+    ],
+    "description": "是否允许跳过"
+  },
+  "DSL: Text Novel": {
+    "prefix": "textnovel",
+    "body": [
+      "[text text=\"${1:请输入文本}\"]$0"
+    ],
+    "description": "无对话文本"
+  },
+  "DSL: Text Talk": {
+    "prefix": "texttalk",
+    "body": [
+      "[text name=\"${1:请输入名称}\" text=\"${2:请输入文本}\"]$0"
+    ],
+    "description": "对话文本"
+  },
+  "DSL: Text Block": {
+    "prefix": "textblock",
+    "body": [
+      "[text text=\"\"\"",
+      "\t$0",
+      "\"\"\"]"
+    ],
+    "description": "文本块"
+  },
+  "DSL: Text Inline": {
+    "prefix": "textinline",
+    "body": [
+      "[text action=\"inline\" text=\"${1:请输入文本}\"]$0"
+    ],
+    "description": "行内文本"
+  },
+  "DSL: Text Action": {
+    "prefix": "textaction",
+    "body": [
+      "[text action=\"${1|clear,new,hide,show|}\"]$0"
+    ],
+    "description": "文本行为"
+  },
+  "DSL: Video Play": {
+    "prefix": "video",
+    "body": [
+      "[video file=\"${1:filename.mp4}\" skippable=\"${2|false,true|}\"]$0"
+    ],
+    "description": "播放视频"
+  },
+  "DSL: Audio Volume": {
+    "prefix": "volume",
+    "body": [
+      "[volume track=\"${1|bgm,se,voice|}\" volume=\"${2:0.5}\" time=\"${3:0}\"]$0"
+    ],
+    "description": "控制音量"
+  },
+  "DSL: Wait & Click": {
+    "prefix": "wait",
+    "body": [
+      "[wait time=\"${1:1.0}\"]$0"
+    ],
+    "description": "等待指定秒数"
   }
 }
