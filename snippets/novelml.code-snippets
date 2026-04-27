@@ -93,7 +93,7 @@
   "DSL: Config (Set Configuration Value)": {
     "prefix": "config",
     "body": [
-      "[config  name=\"${1:config_key}\" value=\"${2:config_value}\"]$0"
+      "[config name=\"${1:config_key}\" value=\"${2:config_value}\"]$0"
     ],
     "description": "修改配置文件"
   },

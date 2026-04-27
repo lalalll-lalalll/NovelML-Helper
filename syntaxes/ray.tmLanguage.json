@@ -1,6 +1,6 @@
 {
-    "scopeName": "source.ray",
     "name": "Ray",
+    "scopeName": "source.ray",
     "patterns": [
         { "include": "#comments" },
         { "include": "#strings" },

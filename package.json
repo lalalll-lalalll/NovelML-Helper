@@ -1,8 +1,8 @@
 {
   "name": "novelml-helper",
   "displayName": "NovelML Helper",
-  "description": "Syntax assistance and support for NovelML(.novel) and Ray scripts files",
-  "version": "1.3.0",
+  "description": "Syntax assistance and support for NovelML(.novel),Ray scripts(.ray),SuikaGUI(.gui),SuikaAnime(.anime) files",
+  "version": "1.4.0",
   "publisher": "lalalll-lalalll",
   "engines": {
     "vscode": "^1.116.0"
@@ -41,6 +41,28 @@
           ".pf"
         ],
         "configuration": "./languages/ray-language-configuration.json"
+      },
+      {
+        "id": "gui",
+        "aliases": [
+          "gui",
+          "GUI"
+        ],
+        "extensions": [
+          ".gui"
+        ],
+        "configuration": "./languages/gui-language-configuration.json"
+      },
+      {
+        "id": "anime",
+        "aliases": [
+          "anime",
+          "Anime"
+        ],
+        "extensions": [
+          ".anime"
+        ],
+        "configuration": "./languages/anime-language-configuration.json"
       }
     ],
     "grammars": [
@@ -53,6 +75,16 @@
         "language": "ray",
         "scopeName": "source.ray",
         "path": "./syntaxes/ray.tmLanguage.json"
+      },
+      {
+        "language": "gui",
+        "scopeName": "source.gui",
+        "path": "./syntaxes/gui.tmLanguage.json"
+      },
+      {
+        "language": "anime",
+        "scopeName": "source.anime",
+        "path": "./syntaxes/anime.tmLanguage.json"
       }
     ],
     "snippets": [

@@ -1,0 +1,72 @@
+{
+    "name": "Suika3 GUI",
+    "scopeName": "source.gui",
+    "patterns": [
+        {
+            "include": "#comments"
+        },
+        {
+            "include": "#blocks"
+        },
+        {
+            "include": "#content"
+        }
+    ],
+    "repository": {
+        "comments": {
+            "name": "comment.line.number-sign",
+            "match": "#.*$"
+        },
+        "blocks": {
+            "name": "entity.name.tag",
+            "match": "^[a-zA-Z0-9_-]+(?=\\s*\\{)"
+        },
+        "content": {
+            "begin": "\\{",
+            "end": "\\}",
+            "beginCaptures": {
+                "0": {
+                    "name": "punctuation.definition.block.begin"
+                }
+            },
+            "endCaptures": {
+                "0": {
+                    "name": "punctuation.definition.block.end"
+                }
+            },
+            "patterns": [
+                {
+                    "include": "#comments"
+                },
+                {
+                    "name": "meta.type-declaration",
+                    "match": "\\b(type)\\s*:\\s*([a-zA-Z0-9_-]+)",
+                    "captures": {
+                        "1": {
+                            "name": "support.type.property"
+                        },
+                        "2": {
+                            "name": "keyword.control"
+                        }
+                    }
+                },
+                {
+                    "name": "support.type.property",
+                    "match": "\\b[a-zA-Z0-9_-]+(?=\\s*:)"
+                },
+                {
+                    "name": "punctuation.terminator",
+                    "match": ";"
+                },
+                {
+                    "name": "string.quoted.double",
+                    "match": "(?<=:)\\s*[^;]+(?=;)"
+                }
+            ]
+        }
+    },
+    "fileTypes": [
+        "gui"
+    ],
+    "scope": "source.gui"
+}
